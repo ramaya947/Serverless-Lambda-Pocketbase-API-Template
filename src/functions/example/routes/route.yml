@@ -1,0 +1,32 @@
+handler: src/functions/example/routes/ExampleHandler.run
+name: ${self:service}-activity
+
+events:
+  - http:
+    path: /example
+    method: get
+    integration: lambda
+    response:
+      headers:
+        Content-Type: "'application/json'"
+  - http:
+    path: /example
+    method: post
+    integration: lambda
+    response:
+      headers:
+        Content-Type: "'application/json'"
+  - http:
+    path: /example
+    method: put
+    integration: lambda
+    response:
+      headers:
+        Content-Type: "'application/json'"
+  - http:
+    path: /example
+    method: delete
+    integration: lambda
+    response:
+      headers:
+        Content-Type: "'application/json'"
