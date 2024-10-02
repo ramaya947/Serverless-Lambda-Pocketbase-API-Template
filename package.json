@@ -1,0 +1,25 @@
+{
+  "name": "backend-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "start": "sls offline",
+    "test": "jest",
+    "pocketbase": ".\\src\\pocketbase\\pocketbase serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramaya947/Backend-Project.git"
+  },
+  "author": "Ricardo Amaya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramaya947/Backend-Project/issues"
+  },
+  "homepage": "https://github.com/ramaya947/Backend-Project#readme",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "serverless-offline": "^14.3.2"
+  }
+}
