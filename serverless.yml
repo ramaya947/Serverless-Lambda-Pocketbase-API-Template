@@ -9,7 +9,12 @@ provider:
   name: aws
   runtime: nodejs20.x
 
-functions: ${file(src/functions/...)}
+functions: 
+  exampleFunctions: ${file(src/functions/example/routes/route.yml)}
+
+custom:
+  serverless-offline:
+    port: 3000 
 
 plugins:
   - serverless-offline

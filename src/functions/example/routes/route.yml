@@ -1,32 +1,16 @@
 handler: src/functions/example/routes/ExampleHandler.run
-name: ${self:service}-activity
+name: ${self:service}-example
 
 events:
-  - http:
-    path: /example
-    method: get
-    integration: lambda
-    response:
-      headers:
-        Content-Type: "'application/json'"
-  - http:
-    path: /example
-    method: post
-    integration: lambda
-    response:
-      headers:
-        Content-Type: "'application/json'"
-  - http:
-    path: /example
-    method: put
-    integration: lambda
-    response:
-      headers:
-        Content-Type: "'application/json'"
-  - http:
-    path: /example
-    method: delete
-    integration: lambda
-    response:
-      headers:
-        Content-Type: "'application/json'"
+  - httpApi:
+      path: /example
+      method: get
+  - httpApi:
+      path: /example
+      method: post
+  - httpApi:
+      path: /example
+      method: put
+  - httpApi:
+      path: /example
+      method: delete
