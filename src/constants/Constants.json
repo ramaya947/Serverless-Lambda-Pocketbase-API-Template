@@ -1,5 +1,5 @@
 {
     "POCKETBASE": {
-        "POCKETBASE_URL": "http://192.168.50.246:8090"
+        "POCKETBASE_URL": "http://127.0.0.1:8090"
     }
 }

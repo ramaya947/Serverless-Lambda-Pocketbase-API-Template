@@ -12,7 +12,7 @@ class Controller {
 
     constructor (db, model) {
         this.pbInstance = new Pocketbase(this.POCKETBASE_URL);
-        this.dbTable = db.toLowerClase();
+        this.dbTable = db.toLowerCase();
         this.Model = model;
     }
 
@@ -20,7 +20,6 @@ class Controller {
      * For use when Controller is called from other Controller and is not directly setup within the Lambda Flow
      *
      * @param {number} a - The first number to add.
-     * @param {number} b - The second number to add.
      * @returns {number} The sum of a and b.
      * @throws {TypeError} If the inputs cannot be converted to numbers.
      */
@@ -31,17 +30,21 @@ class Controller {
     getAll = async () => {
         var records = await this.pbInstance.collection(this.dbTable).getFullList({
             sort: '-created',
-            '$autoCancel': false
+            requestKey: null
         });
 
         records = records.map(record => {
             return new this.Model(record).getObject();
         });
+
+        return records;
     }
 
     getById = async (id = "") => {
-        var record = await this.pbInstance.collection(this.dbTable).getOne(`${id}`, {
-            '$autoCancel': false
+        console.log(this.dbTable);
+        console.log(id);
+        var record = await this.pbInstance.collection(this.dbTable).getOne(id, {
+            requestKey: null
         });
 
         return new this.Model(record).getObject();
@@ -52,8 +55,8 @@ class Controller {
 
         ids.forEach(async id => {
             const record = await this.pbInstance.collection(this.dbTable).getFirstListItem({
-                filter: `id = "${id}`,
-                '$autoCancel': false
+                filter: `id = "${id}"`,
+                requestKey: null
             });
 
             if (record)
@@ -66,8 +69,8 @@ class Controller {
     getByParam = async (key = "", value = "") => {
         var records = await this.pbInstance.collection(this.dbTable).getFullList({
             sort: '-created',
-            filter: `${key} = "${value}`,
-            '$autoCancel': false
+            filter: `${key} = "${value}"`,
+            requestKey: null
         });
 
         records = records.map(record => {
