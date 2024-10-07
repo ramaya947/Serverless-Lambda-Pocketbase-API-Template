@@ -23,12 +23,13 @@ describe('User Controller Suite - Login', () => {
     it('Test Register New User', async () => {
         var user = await classController.register(testUser);
 
+        testUser.id = user.id;
         expect(user.id).not.toBe('');
         expect(user.id).not.toBe(null);
     })
 
     it('Test New User Login', async () => {
-        var result = await classController.logIn(testUser.email, testUser.password);
+        var result = await classController.logIn({ email: testUser.email, password: testUser.password});
         token = result.token;
 
         expect(token).not.toBe('');
@@ -37,7 +38,7 @@ describe('User Controller Suite - Login', () => {
 
     it('Test New User Refresh', async () => {
         classController.pbInstance.authStore.save(token, null);
-        var result = await classController.refreshToken(testUser.email, testUser.password);
+        var result = await classController.refreshToken();
         token = result.token;
 
         expect(token).not.toBe('');
@@ -49,5 +50,10 @@ describe('User Controller Suite - Login', () => {
         var result = await classController.logout();
 
         expect(result.loggedOut).toBe(true);
+    })
+
+    afterAll(async () => {
+        classController.pbInstance.authStore.save(token, null);
+        await classController.pbInstance.collection('users').delete(testUser.id);
     })
 })
