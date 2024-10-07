@@ -1,0 +1,16 @@
+handler: src/functions/user/routes/UserHandler.run
+name: ${self:service}-user
+
+events:
+  - httpApi:
+      path: /user
+      method: get
+  - httpApi:
+      path: /user/logout
+      method: get
+  - httpApi:
+      path: /user
+      method: post
+  - httpApi:
+      path: /user/register
+      method: post
