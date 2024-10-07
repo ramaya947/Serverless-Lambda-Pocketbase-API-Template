@@ -18,7 +18,7 @@ class Example extends Controller {
 
     execute = async (event) => {
         // Authenticate with Pocketbase
-        this.pbInstance.authStore.save(event.headers.Authorization, null);
+        this.pbInstance.authStore.save(event.headers.authorization, null);
 
         const httpMethod = event.httpMethod || event.method || event?.requestContext?.http?.method || '';
         const queryParams = (!event.queryStringParameters) ? {} : ((typeof event.queryStringParameters === 'object') ? event.queryStringParameters : JSON.parse(event.queryStringParameters));

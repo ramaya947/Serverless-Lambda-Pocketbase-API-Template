@@ -11,6 +11,7 @@ provider:
 
 functions: 
   exampleFunctions: ${file(src/functions/example/routes/route.yml)}
+  userFunctions: ${file(src/functions/user/routes/route.yml)}
 
 custom:
   serverless-offline:

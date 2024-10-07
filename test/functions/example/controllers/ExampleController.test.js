@@ -1,4 +1,5 @@
 const { Example } = require("../../../../src/functions/example/controllers/Example");
+const { User } = require("../../../../src/functions/user/controllers/User");
 const { ExampleModel } = require("../../../../src/models/ExampleModel");
 
 describe('Example Controller Suite - CRUD', () => {
@@ -7,9 +8,15 @@ describe('Example Controller Suite - CRUD', () => {
     let name;
     let description;
     let id;
+    let token;
 
-    beforeAll(() => {
+    beforeAll(async () => {
+        var authResult = await User.getInstance().logIn({ email: "test-user@email.com", password: "Test!2024"});
+        token = authResult.token;
+
         classController = Example.getInstance();
+        classController.pbInstance.authStore.save(token);
+
         unique_id = Date.now();
         name = `Unit Test Name - ${unique_id}`;
         description = `Unit Test Description - ${unique_id}`;
