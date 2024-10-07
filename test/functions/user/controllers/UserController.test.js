@@ -29,7 +29,7 @@ describe('User Controller Suite - Login', () => {
     })
 
     it('Test New User Login', async () => {
-        var result = await classController.logIn(testUser.email, testUser.password);
+        var result = await classController.logIn({ email: testUser.email, password: testUser.password});
         token = result.token;
 
         expect(token).not.toBe('');
@@ -38,7 +38,7 @@ describe('User Controller Suite - Login', () => {
 
     it('Test New User Refresh', async () => {
         classController.pbInstance.authStore.save(token, null);
-        var result = await classController.refreshToken(testUser.email, testUser.password);
+        var result = await classController.refreshToken();
         token = result.token;
 
         expect(token).not.toBe('');
