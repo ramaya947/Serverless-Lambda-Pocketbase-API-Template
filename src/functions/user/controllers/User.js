@@ -78,7 +78,7 @@ class User extends Controller {
     logout = async () => {
         this.pbInstance.authStore.clear();
 
-        return { loggedOut: (this.pbInstance.authStore.model && this.pbInstance.authStore.model.id) ? false : true }
+        return { loggedOut: (this.pbInstance.authStore?.model?.id) ? false : true }
     }
 
     register = async (payload) => {
