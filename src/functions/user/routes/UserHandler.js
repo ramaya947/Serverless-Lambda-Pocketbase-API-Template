@@ -9,13 +9,13 @@ const run = async (event, context) => {
         return {
             status: 200,
             data: response
-        }
+        };
     } catch (error) {
         console.log(error);
         return {
             status: error.status,
             message: error.message || "Internal Server Error"
-        }
+        };
     }
 }
 
