@@ -82,8 +82,7 @@ class Controller {
 
     add = async (obj = {}) => {
         if (Object.keys(obj).length === 0) {
-            // TODO: Replace with Error Handling Class
-            return "Empty objects cannot be added";
+            throw new Error("Empty objects cannot be added");
         }
 
         var record = await this.pbInstance.collection(this.dbTable).create(obj);
@@ -93,8 +92,7 @@ class Controller {
 
     update = async (key = {}, updates = {}) => {
         if (Object.keys(updates).length === 0 || Object.keys(key).length === 0) {
-            // TODO: Replace with Error Handling Class
-            return "Empty objects cannot be added";
+            throw new Error("Empty objects cannot be added");
         }
 
         var record = await this.pbInstance.collection(this.dbTable).update(key, updates);
@@ -104,14 +102,16 @@ class Controller {
 
     delete = async (key = {}) => {
         if (Object.keys(key).length === 0) {
-            // TODO: Replace with Error Handling Class
-            return "Key must be provided in order to delete an item";
+            throw new Error("Key must be provided in order to delete an item");
         }
 
         var response = await this.pbInstance.collection(this.dbTable).delete(key);
 
-        // TODO: Test and confirm if this is needed, this seems redundant
-        return response === true ? true : false
+        if (response) {
+            return response;
+        } else {
+            throw new Error("Failed to delete item");
+        }
     }
 }
 
