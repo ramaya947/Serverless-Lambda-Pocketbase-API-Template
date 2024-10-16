@@ -41,8 +41,6 @@ class Controller {
     }
 
     getById = async (id = "") => {
-        console.log(this.dbTable);
-        console.log(id);
         var record = await this.pbInstance.collection(this.dbTable).getOne(id, {
             requestKey: null
         });
@@ -90,9 +88,9 @@ class Controller {
         return new this.Model(record).getObject();
     }
 
-    update = async (key = {}, updates = {}) => {
-        if (Object.keys(updates).length === 0 || Object.keys(key).length === 0) {
-            throw new Error("Empty objects cannot be added");
+    update = async (key = "", updates = {}) => {
+        if (Object.keys(updates).length === 0 || key.length === 0) {
+            throw new Error("Empty objects cannot be Updated");
         }
 
         var record = await this.pbInstance.collection(this.dbTable).update(key, updates);

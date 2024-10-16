@@ -15,7 +15,7 @@ describe('Example Controller Suite - CRUD', () => {
         token = authResult.token;
 
         classController = Example.getInstance();
-        classController.pbInstance.authStore.save(token);
+        classController.setAuthToken(token);
 
         unique_id = Date.now();
         name = `Unit Test Name - ${unique_id}`;

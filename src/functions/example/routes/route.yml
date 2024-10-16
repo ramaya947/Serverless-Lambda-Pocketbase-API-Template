@@ -5,12 +5,16 @@ events:
   - httpApi:
       path: /example
       method: get
+                
   - httpApi:
       path: /example
-      method: post
+      method: post            
+                
   - httpApi:
       path: /example
       method: put
+                
   - httpApi:
       path: /example
       method: delete
+                
