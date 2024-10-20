@@ -1,0 +1,20 @@
+handler: src/functions/example/routes/ExampleHandler.run
+name: ${self:service}-example
+
+events:
+  - httpApi:
+      path: /example
+      method: get
+                
+  - httpApi:
+      path: /example
+      method: post            
+                
+  - httpApi:
+      path: /example
+      method: put
+                
+  - httpApi:
+      path: /example
+      method: delete
+                

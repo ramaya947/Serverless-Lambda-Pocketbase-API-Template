@@ -1,0 +1,14 @@
+provider:
+  name: aws
+  runtime: nodejs20.x
+
+functions: 
+  exampleFunctions: ${file(src/functions/example/routes/route.yml)}
+  userFunctions: ${file(src/functions/user/routes/route.yml)}
+
+custom:
+  serverless-offline:
+    port: 3000 
+
+plugins:
+  - serverless-offline

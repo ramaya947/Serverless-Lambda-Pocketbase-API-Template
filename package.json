@@ -1,0 +1,29 @@
+{
+  "name": "backend-project",
+  "version": "1.0.0",
+  "description": "This project provides a template for quickly setting up a serverless API using NodeJS, AWS Lambda, and Pocketbase. It's designed to help developers jumpstart their projects with a robust backend infrastructure.",
+  "main": "",
+  "scripts": {
+    "start": "sls offline",
+    "test": "jest",
+    "pocketbase": ".\\src\\pocketbase\\pocketbase serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramaya947/Backend-Project.git"
+  },
+  "author": "Ricardo Amaya https://ramaya947.github.io/RamayaPortfolio/",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramaya947/Backend-Project/issues"
+  },
+  "homepage": "https://github.com/ramaya947/Backend-Project#readme",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "serverless-offline": "^14.3.2"
+  },
+  "dependencies": {
+    "pocketbase": "^0.21.5",
+    "uuid": "^10.0.0"
+  }
+}
