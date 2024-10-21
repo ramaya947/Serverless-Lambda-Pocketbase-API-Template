@@ -34,6 +34,7 @@ Other credentials may be used, just update the configuration file.
 7. Create Example collection with the fields
 - name
 - description
+8. In Example -> Edit Collection -> API Rules: Set @request.auth.id != '' as the rule for each category
 
 ## API Endpoints
 
